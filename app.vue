@@ -1,54 +1,48 @@
 <script setup lang="ts">
 import "@/assets/style/variable.css";
 import "@/utils/listenKeyboard";
-import { useStorage } from "@vueuse/core";
-import { showToast } from "vant";
-const globalStore = useGlobalStore();
-const store = useReportFeedbackStore();
-const route = useRoute();
-const navigationBarStore = useNavigationBarStore();
-const loading = ref(false);
-// const errorMessage = ref("");
-const token = useStorage("token", "");
-// const userInfo = await useUserInfo();
+// import { useStorage } from "@vueuse/core";
+// import { showToast } from "vant";
+// const globalStore = useGlobalStore();
+// const store = useReportFeedbackStore();
+// const route = useRoute();
+// const navigationBarStore = useNavigationBarStore();
+// const loading = ref(false);
+// // const errorMessage = ref("");
+// const token = useStorage("token", "");
+// // const userInfo = await useUserInfo();
 
-watch(
-  () => route.path,
-  (value) => {
-    navigationBarStore.onShowTabBar(value);
-    navigationBarStore.onActive(value);
-  },
-  {
-    immediate: true,
-  }
-);
+// watch(
+//   () => route.path,
+//   (value) => {
+//     navigationBarStore.onShowTabBar(value);
+//     navigationBarStore.onActive(value);
+//   },
+//   {
+//     immediate: true,
+//   }
+// );
 
-onMounted(() => {
-  if (!route.query.token) {
-    return;
-  }
-  token.value = route.query.token as string;
-});
+// onMounted(() => {
+//   if (!route.query.token) {
+//     return;
+//   }
+//   token.value = route.query.token as string;
+// });
 
-watchEffect(() => {
-  if (!!token.value) {
-    loading.value = false;
-    return;
-  }
-  loading.value = true;
-});
+// watchEffect(() => {
+//   if (!!token.value) {
+//     loading.value = false;
+//     return;
+//   }
+//   loading.value = true;
+// });
 </script>
 
 <template>
-  <HomeLoadingPage v-if="loading" />
+  <!-- <HomeLoadingPage v-if="loading" /> -->
 
-  <div v-else class="global_wrap">
-    <TopBar />
-    <NuxtPage />
-    <NavigationBar />
-    <ToTop />
-    <ReportFeedback :show="store.visible" />
-  </div>
+  <NuxtPage />
 </template>
 <style lang="less">
 .global_wrap {

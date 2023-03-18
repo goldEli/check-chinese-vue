@@ -1,4 +1,4 @@
 <script setup lang="ts">
-// navigateTo(`/zh/home`);
+navigateTo(`/zh/home`);
 </script>
 <template></template>
